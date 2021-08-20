@@ -1,3 +1,12 @@
+on init
+    mkdir /mnt/vendor/persist
+    mount ext4 /dev/block/by-name/persist /mnt/vendor/persist rw
+    setprop persist.sys.firstlaunch false
+
+on early-init 
+    start adbd
+    start vold    
+
 on fs
     install_keyring
     mkdir /mnt/vendor/persist 0777 system system
@@ -27,7 +36,7 @@ service mobicore /system/bin/mcDriverDaemon --P1 /mnt/vendor/persist/mcRegistry 
     seclabel u:r:recovery:s0
 
 #Add for OPPO FBE
-service hal_cryptoeng_oppo /system/bin/vendor.oppo.hardware.cryptoeng@1.0-service
+service hal_cryptoeng_oppo /system/bin/vendor.oplus.hardware.cryptoeng@1.0-service
     user root
     group root drmrpc
     disabled
@@ -52,6 +61,7 @@ service vendor.vibrator-1-0 /system/bin/android.hardware.vibrator@1.0-service
     seclabel u:r:recovery:s0
 
 on boot
+    start init-device-sh
     start vendor.vibrator-1-0
 
 on property:hwservicemanager.ready=true
