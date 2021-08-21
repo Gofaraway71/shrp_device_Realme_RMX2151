@@ -46,7 +46,7 @@ TARGET_USES_UEFI := true
 TARGET_BOARD_PLATFORM := mt6768
 
 # Kernel
-BOARD_KERNEL_CMDLINE := BOARD_KERNEL_CMDLINE bootopt=64S3,32N2,64N2 buildvariant=user loop.max_part=70 buildvariant=eng
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user  loop.max_part=70 
 BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=bootloader
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_BASE := 0x40078000
@@ -55,7 +55,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x0bc08000
 BOARD_RAMDISK_OFFSET     := 0x07c08000
 BOARD_DTB_OFFSET := 0x0bc08000
-BOARD_KERNEL_SECOND_OFFSET := 0x00f00000
+BOARD_KERNEL_SECOND_OFFSET := 0xbff88000
 BOARD_BOOTIMG_HEADER_VERSION := 2
 
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
@@ -94,9 +94,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Dynamic Partition
-BOARD_SUPER_PARTITION_SIZE := 6685720576
+BOARD_SUPER_PARTITION_SIZE := 6970933248
 BOARD_SUPER_PARTITION_GROUPS := main
-BOARD_MAIN_SIZE := 6685720576
+BOARD_MAIN_SIZE := 6970933248
 BOARD_MAIN_PARTITION_LIST := product vendor system
 
 # System as root
@@ -127,11 +127,12 @@ BOARD_ROOT_EXTRA_FOLDERS += metadata
 
 # Crypto
 PLATFORM_SECURITY_PATCH := 2099-12-31
+PLATFORM_VERSION := 20.1.0
 VENDOR_SECURITY_PATCH := 2099-12-31
-PLATFORM_VERSION := 16.1.0
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
+TW_USE_FSCRYPT_POLICY := 1
 
 # System as root
 BOARD_SUPPRESS_SECURE_ERASE := true
@@ -156,9 +157,9 @@ TW_Y_OFFSET := 50
 TW_H_OFFSET := -50
 TARGET_USES_MKE2FS := true
 TW_EXCLUDE_TWRPAPP := true
-TW_INCLUDE_LOGICAL := oppo_product oppo_engineering preload_common
+TW_INCLUDE_LOGICAL := product oppo_engineering preload_common
 TW_OZIP_DECRYPT_KEY := 0000
-TW_CUSTOM_CPU_TEMP_PATH := /sys/class/power_supply/battery/temp
+TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone3/temp
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_NO_SCREEN_BLANK := true
 TW_INCLUDE_RESETPROP := true
@@ -185,7 +186,7 @@ TARGET_USES_LOGD := true
 # Path of your SHRP Tree
 SHRP_PATH := device/realme/RMX2020
 # Maintainer name *
-SHRP_MAINTAINER := sarthakroy2002
+SHRP_MAINTAINER := Gofaraway71
 # Device codename *
 SHRP_DEVICE_CODE := RMX2020
 # Recovery Type (It can be treble,normal,SAR) [Only for About Section] *
