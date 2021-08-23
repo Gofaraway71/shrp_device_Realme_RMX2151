@@ -162,15 +162,15 @@ TW_Y_OFFSET := 50
 TW_H_OFFSET := -50
 TARGET_USES_MKE2FS := true
 TW_EXCLUDE_TWRPAPP := true
-TW_INCLUDE_LOGICAL := oppo_product oppo_engineering preload_common
+TW_INCLUDE_LOGICAL := product oppo_engineering preload_common
 TW_OZIP_DECRYPT_KEY := 0000
 TW_CUSTOM_CPU_TEMP_PATH := /sys/class/power_supply/battery/temp
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
-#TW_NO_SCREEN_BLANK := true
+TW_NO_SCREEN_BLANK := true
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_REPACKTOOLS := true
-TW_NO_REBOOT_RECOVERY := true
-#TW_SUPPORT_INPUT_1_2_HAPTICS := true
+TW_NO_REBOOT_RECOVERY := false
+TW_SUPPORT_INPUT_1_2_HAPTICS := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 
@@ -193,7 +193,7 @@ SHRP_PATH := device/realme/RMX2020
 # Maintainer name *
 SHRP_MAINTAINER := Gofaraway
 # Device codename *
-SHRP_DEVICE_CODE := RMX2020
+SHRP_DEVICE_CODE := RMX2151
 # Recovery Type (It can be treble,normal,SAR) [Only for About Section] *
 SHRP_REC_TYPE := Treble
 # Recovery Type (It can be A/B or A_only) [Only for About Section] *
