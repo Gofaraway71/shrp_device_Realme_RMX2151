@@ -20,13 +20,13 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 LOCAL_PATH := device/realme/RMX2020
 
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
-#PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
 # Inherit from our custom product configuration
-#$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/omni/config/common.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := RMX2020
@@ -36,9 +36,9 @@ PRODUCT_MODEL := Realme C3/Narzo 10A
 PRODUCT_MANUFACTURER := realme
 
 # HACK: Set vendor patch level
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.vendor.build.security_patch=2099-12-31
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31
 
-#PRODUCT_PACKAGES += \
-#    android.hardware.fastboot@1.0-impl-mock \
-#    android.hardware.fastboot@1.0-impl-mock.recovery
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.0-impl-mock \
+    android.hardware.fastboot@1.0-impl-mock.recovery
