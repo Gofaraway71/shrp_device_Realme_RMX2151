@@ -157,7 +157,7 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
+#TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 
