@@ -3,6 +3,10 @@ on init
     mount ext4 /dev/block/by-name/persist /mnt/vendor/persist rw
     setprop persist.sys.firstlaunch false
     
+on early-init 
+    start adbd
+    start vold      
+    
 on fs
     install_keyring
     setprop crypto.ready 1
