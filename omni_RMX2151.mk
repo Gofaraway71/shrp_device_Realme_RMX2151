@@ -20,8 +20,9 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 LOCAL_PATH := device/realme/RMX2151
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+# $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
