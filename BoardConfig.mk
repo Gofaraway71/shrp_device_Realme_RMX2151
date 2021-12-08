@@ -46,21 +46,20 @@ TARGET_USES_UEFI := true
 TARGET_BOARD_PLATFORM := mt6768
 
 # Kernel
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 loop.max_part=70 buildvariant=eng
-BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=bootloader
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user  loop.max_part=70 
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x0bc08000
-BOARD_RAMDISK_OFFSET     := 0x07c08000
+BOARD_RAMDISK_OFFSET := 0x07c08000
 BOARD_DTB_OFFSET := 0x0bc08000
-BOARD_KERNEL_SECOND_OFFSET := 0x00f00000
+BOARD_KERNEL_SECOND_OFFSET := 0xbff88000
 BOARD_BOOTIMG_HEADER_VERSION := 2
 
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtb
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
@@ -70,7 +69,6 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
@@ -156,31 +154,33 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
-
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_NTFS_3G := true
 TW_USE_TOOLBOX := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 1200
-TW_SKIP_COMPATIBILITY_CHECK := true
-TW_Y_OFFSET := 50
-TW_H_OFFSET := -50
+TW_SCREEN_BLANK_ON_BOOT := false
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
 TW_EXCLUDE_TWRPAPP := true
 TW_INCLUDE_LOGICAL := product oppo_engineering preload_common
 TW_OZIP_DECRYPT_KEY := 0000
-TW_CUSTOM_CPU_TEMP_PATH := /sys/class/power_supply/battery/temp
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_REPACKTOOLS := true
+TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone3/temp
+TW_Y_OFFSET := 15
+TW_H_OFFSET := -80
 TW_NO_SCREEN_BLANK := false
 TW_NO_REBOOT_RECOVERY := false
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
@@ -201,7 +201,7 @@ TARGET_USES_LOGD := true
 
 # NOTE - Dont use '-' or blank spaces in flag values , otherwise it will create build errors or other bugs in recovery (Excluding SHRP_PATH,SHRP_REC). 
 # Path of your SHRP Tree
-SHRP_PATH := device/realme/RMX2020
+SHRP_PATH := device/realme/RMX2151
 # Maintainer name *
 SHRP_MAINTAINER := Gofaraway
 # Device codename *
@@ -233,7 +233,7 @@ SHRP_DARK := true
 INC_IN_REC_MAGISK := true
 
 #SHRP Addons
-SHRP_EXTERNAL_ADDON_PATH := "device/realme/RMX2020/addon/"
+SHRP_EXTERNAL_ADDON_PATH := "device/realme/RMX2151/addon/"
 SHRP_EXTERNAL_ADDON_1_NAME := "SELinux Permissiver"
 SHRP_EXTERNAL_ADDON_1_INFO := "Makes SELinux Permissive"
 SHRP_EXTERNAL_ADDON_1_FILENAME := "permissiver.zip"
